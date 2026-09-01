@@ -6,7 +6,7 @@ using UnityEngine;
 namespace CoffeeBean
 {
     /// <summary>
-    /// UI 管理门面（合并对齐 QFramework UIKit + UIManager）：
+    /// UI 管理门面：
     /// 静态 API 打开/关闭/显示/隐藏面板、栈式导航、层级挂载、加载器池。
     /// 单例（MonoBehaviour 常驻）。
     /// </summary>
@@ -222,7 +222,7 @@ namespace CoffeeBean
             return panel;
         }
 
-        /// <summary>面板铺满层级节点（对齐 QFramework SetDefaultSizeOfPanel）。</summary>
+        /// <summary>面板铺满层级节点。</summary>
         private static void SetDefaultSize(ICUIPanel panel)
         {
             if (panel.Transform is RectTransform rect)

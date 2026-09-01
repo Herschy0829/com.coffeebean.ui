@@ -1,6 +1,6 @@
 namespace CoffeeBean
 {
-    /// <summary>面板状态（对齐 QFramework PanelState）。</summary>
+    /// <summary>面板状态。</summary>
     public enum CUIPanelState
     {
         /// <summary>打开中（OnOpen 已调用，尚未 Show 或已 Show）。</summary>
@@ -14,7 +14,7 @@ namespace CoffeeBean
     }
 
     /// <summary>
-    /// 面板打开类型（对齐 QFramework PanelOpenType）：
+    /// 面板打开类型：
     /// Single = 同类型面板全局唯一（重复打开复用并重新 Show）；
     /// Multiple = 每次打开都新建实例（可并存多个）。
     /// </summary>
@@ -25,7 +25,7 @@ namespace CoffeeBean
     }
 
     /// <summary>
-    /// UI 层级（QF 风格 6 层）：Bg（背景）/ Common（普通面板）/ PopUI（弹窗）/
+    /// UI 层级（6 层）：Bg（背景）/ Common（普通面板）/ PopUI（弹窗）/
     /// Guide（新手引导）/ Toast（提示）/ Top（最顶层）。
     /// </summary>
     public enum CUILevel

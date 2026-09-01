@@ -9,7 +9,7 @@ using UnityEngine;
 namespace CoffeeBean.EditorTools
 {
     /// <summary>
-    /// 编译后自动挂载（对齐 QFramework UISerializer）：
+    /// 编译后自动挂载：
     /// 代码生成后注册的预制体，在脚本编译完成后（[DidReloadScripts]）按 CBind 标记
     /// 把节点引用填充到面板脚本的序列化字段上。
     /// </summary>

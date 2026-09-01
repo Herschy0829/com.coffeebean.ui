@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CoffeeBean.EditorTools
 {
     /// <summary>
-    /// 面板 Inspector（对齐 QFramework UIPanelInspector）：
+    /// 面板 Inspector：
     /// 选中 UI 预制体时显示"生成代码"按钮，一键生成主脚本 + Designer 并注册自动挂载。
     /// </summary>
     [CustomEditor(typeof(GameObject), true, isFallback = true)]

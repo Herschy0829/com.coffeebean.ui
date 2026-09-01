@@ -3,7 +3,7 @@ using System;
 namespace CoffeeBean
 {
     /// <summary>
-    /// 面板打开参数（对齐 QFramework PanelSearchKeys，对象池复用）。
+    /// 面板打开参数。
     /// 打开面板时指定：类型/预制体名/层级/传参/打开类型等。
     /// </summary>
     public sealed class CUIPanelSearchKeys

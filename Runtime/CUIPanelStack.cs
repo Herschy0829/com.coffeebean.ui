@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace CoffeeBean
 {
     /// <summary>
-    /// 面板栈（对齐 QFramework UIPanelStack）：
+    /// 面板栈：
     /// Push = 记录当前面板信息并关闭它；Pop = 按记录信息重新打开上一个面板。
     /// 适用于"A 打开 B，B 返回 A"的导航场景。
     /// </summary>

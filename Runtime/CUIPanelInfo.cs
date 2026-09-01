@@ -3,7 +3,7 @@ using System;
 namespace CoffeeBean
 {
     /// <summary>
-    /// 面板信息（对齐 QFramework PanelInfo，对象池复用）：
+    /// 面板信息：
     /// 记录面板的打开参数，供栈式导航 Pop 时恢复。
     /// </summary>
     public sealed class CUIPanelInfo

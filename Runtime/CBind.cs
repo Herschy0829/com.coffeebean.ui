@@ -3,7 +3,7 @@ using UnityEngine;
 namespace CoffeeBean
 {
     /// <summary>
-    /// 代码生成绑定标记（对齐 QFramework 的 Bind/AbstractBind）：
+    /// 代码生成绑定标记：
     /// 挂在 UI 预制体节点上，代码生成器据此生成字段引用并自动挂载到面板脚本。
     /// 生成后该组件会被编辑器自动移除（运行时无开销）。
     /// </summary>
@@ -38,7 +38,7 @@ namespace CoffeeBean
         }
     }
 
-    /// <summary>绑定类型推断器（对齐 QFramework AbstractBind.GetDefaultComponentName 的优先级）。</summary>
+    /// <summary>绑定类型推断器。</summary>
     public static class CBindTypeResolver
     {
         public static string Resolve(GameObject go)

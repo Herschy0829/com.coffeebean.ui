@@ -5,7 +5,7 @@ using UnityEngine;
 namespace CoffeeBean
 {
     /// <summary>
-    /// 面板加载器接口（对齐 QFramework IPanelLoader，可插拔）：
+    /// 面板加载器接口：
     /// 默认实现 <see cref="CResourcesPanelLoader"/>（Resources.Load）；
     /// asset 模块发布后可用 Addressables 实现替换（CAssetPanelLoader）。
     /// </summary>
@@ -21,7 +21,7 @@ namespace CoffeeBean
         void Unload();
     }
 
-    /// <summary>加载器池接口（对齐 QFramework IPanelLoaderPool）：分配/回收加载器。</summary>
+    /// <summary>加载器池接口：分配/回收加载器。</summary>
     public interface ICUIPanelLoaderPool
     {
         ICUIPanelLoader AllocateLoader();

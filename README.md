@@ -7,7 +7,7 @@ CoffeeBean 框架的 UI 模块：**UGUI 面板管理 + 代码生成**。
 - **代码生成**：`CBind` 标记组件 → Inspector/右键"生成面板代码" → **主脚本 + Designer partial 两文件分离**（用户代码不被覆盖）→ 编译后自动挂载字段引用
 - **零额外依赖**：仅依赖 `com.coffeebean.tools`（单例/日志）
 
-> 设计参考：QFramework UIKit + CodeGenKit（MIT）。设计文档：`docs/design-ui.md`
+> 设计文档：`docs/design-ui.md`
 
 ## 安装
 

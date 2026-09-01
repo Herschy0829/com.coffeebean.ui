@@ -4,7 +4,7 @@ using UnityEngine.UI;
 namespace CoffeeBean
 {
     /// <summary>
-    /// UI 根节点（对齐 QFramework UIRoot）：单例，6 个层级节点（Bg/Common/PopUI/Guide/Toast/Top），
+    /// UI 根节点：单例，6 个层级节点（Bg/Common/PopUI/Guide/Toast/Top），
     /// 负责面板挂载层级、分辨率设置、渲染模式切换。
     /// 首次访问时自动创建（DontDestroyOnLoad）。
     /// </summary>
@@ -139,7 +139,7 @@ namespace CoffeeBean
         }
 
         /// <summary>
-        /// 将面板挂到对应层级（对齐 QFramework SetLevelOfPanel）：
+        /// 将面板挂到对应层级：
         /// 面板自带 Canvas 则挂到根（独立渲染），否则挂到对应层级节点。
         /// </summary>
         public void SetLevelOfPanel(CUILevel level, ICUIPanel panel)

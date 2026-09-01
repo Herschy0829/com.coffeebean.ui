@@ -6,7 +6,7 @@ using System.Linq;
 namespace CoffeeBean
 {
     /// <summary>
-    /// 面板索引（对齐 QFramework UIKitTableIndex）：按 key 索引数据项，支持一 key 多值。
+    /// 面板索引：按 key 索引数据项，支持一 key 多值。
     /// </summary>
     internal sealed class CUIPanelIndex<TKey, TData>
     {
@@ -51,7 +51,7 @@ namespace CoffeeBean
     }
 
     /// <summary>
-    /// 面板表（对齐 QFramework UIPanelTable）：双索引（预制体名/类型）管理所有已创建面板。
+    /// 面板表：双索引（预制体名/类型）管理所有已创建面板。
     /// </summary>
     public sealed class CUIPanelTable : IEnumerable<ICUIPanel>
     {
@@ -76,7 +76,7 @@ namespace CoffeeBean
             _typeIndex.Clear();
         }
 
-        /// <summary>按打开参数查询面板（对齐 QFramework GetPanelsByPanelSearchKeys 的查询优先级）。</summary>
+        /// <summary>按打开参数查询面板。</summary>
         public IEnumerable<ICUIPanel> GetPanels(CUIPanelSearchKeys keys)
         {
             if (keys == null) return Enumerable.Empty<ICUIPanel>();

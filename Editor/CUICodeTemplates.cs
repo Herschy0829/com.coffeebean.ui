@@ -28,7 +28,7 @@ namespace CoffeeBean.EditorTools
     }
 
     /// <summary>
-    /// 面板代码模板（对齐 QFramework UIPanelTemplate + UIPanelDesignerTemplate）：
+    /// 面板代码模板：
     /// 主脚本（用户可编辑，仅首次生成）+ Designer partial（自动生成，可反复覆盖）。
     /// </summary>
     internal static class CUICodeTemplates

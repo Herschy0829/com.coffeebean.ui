@@ -3,7 +3,7 @@ using UnityEngine;
 namespace CoffeeBean
 {
     /// <summary>
-    /// 面板接口（对齐 QFramework IPanel）：
+    /// 面板接口：
     /// CUIManager 通过此接口驱动面板生命周期，业务面板继承 <see cref="CUIPanel"/> 即可。
     /// </summary>
     public interface ICUIPanel

@@ -1,7 +1,7 @@
 namespace CoffeeBean
 {
     /// <summary>
-    /// 面板传参数据接口（对齐 QFramework 的 IUIData）：打开面板时传给 <see cref="CUIPanel.OnInit/OnOpen"/>。
+    /// 面板传参数据接口：打开面板时传给 <see cref="CUIPanel.OnInit/OnOpen"/>。
     /// 业务面板定义自己的 Data 类实现此接口。
     /// </summary>
     public interface ICUIData

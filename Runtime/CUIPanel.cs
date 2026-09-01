@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CoffeeBean
 {
     /// <summary>
-    /// 面板抽象基类（对齐 QFramework UIPanel）：
+    /// 面板抽象基类：
     /// 业务面板继承此类，实现 OnInit/OnOpen/OnShow/OnHide/OnClose 生命周期钩子。
     /// 生命周期由 CUIManager 驱动：Init -> Open -> Show；Close -> OnClose -> Hide -> 卸载。
     /// </summary>

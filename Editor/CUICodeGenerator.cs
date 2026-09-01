@@ -6,7 +6,7 @@ using UnityEngine;
 namespace CoffeeBean.EditorTools
 {
     /// <summary>
-    /// 面板代码生成器（对齐 QFramework UICodeGenerator + UISerializer）：
+    /// 面板代码生成器：
     /// 扫描预制体上的 CBind 标记 → 生成 主脚本 + Designer（两文件分离）→ 注册编译后自动挂载。
     /// 入口：右键菜单 / CUIPanelInspector 按钮。
     /// </summary>
