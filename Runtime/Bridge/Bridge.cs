@@ -3,7 +3,7 @@ using CoffeeBean;
 
 [assembly: CoffeeBeanModule(
     "com.coffeebean.ui",
-    "0.1.0",
+    "0.1.1",
     DisplayName = "UI",
     Description = "UI module: UGUI panel management (CUIManager/CUIPanel, layers, stack, pluggable loader) + code generation (CBind, two-file separation).",
     Dependencies = new[] { "com.coffeebean.core", "com.coffeebean.tools" }

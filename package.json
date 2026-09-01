@@ -1,6 +1,6 @@
 {
   "name": "com.coffeebean.ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "displayName": "CoffeeBean UI",
   "description": "UI module for the CoffeeBean framework: UGUI panel management (CUIManager/CUIPanel, 6 layers, panel stack, pluggable loader) + code generation (CBind marker, main/Designer two-file separation, auto-binding after compile). Depends on com.coffeebean.tools.",
   "unity": "6000.0",
