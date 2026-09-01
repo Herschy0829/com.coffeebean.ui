@@ -1,0 +1,5 @@
+<linker>
+  <!-- CoffeeBean.UI：防止代码生成的面板类型被 IL2CPP 裁剪（反射挂载/序列化字段需要保留类型） -->
+  <assembly fullname="CoffeeBean.UI" preserve="all" />
+  <assembly fullname="CoffeeBean.UI.Demo" preserve="all" />
+</linker>

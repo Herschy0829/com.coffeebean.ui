@@ -1,0 +1,16 @@
+{
+  "name": "CoffeeBean.UI",
+  "rootNamespace": "CoffeeBean",
+  "references": [
+    "CoffeeBean.Tools"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

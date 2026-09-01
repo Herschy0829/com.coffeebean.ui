@@ -1,0 +1,22 @@
+{
+  "name": "com.coffeebean.ui",
+  "version": "0.1.0",
+  "displayName": "CoffeeBean UI",
+  "description": "UI module for the CoffeeBean framework: UGUI panel management (CUIManager/CUIPanel, 6 layers, panel stack, pluggable loader) + code generation (CBind marker, main/Designer two-file separation, auto-binding after compile). Based on the design of QFramework UIKit + CodeGenKit (MIT). Depends on com.coffeebean.tools.",
+  "unity": "6000.0",
+  "author": {
+    "name": "Herschy0829"
+  },
+  "keywords": ["coffeebean", "ui", "ugui", "panel", "codegen"],
+  "dependencies": {
+    "com.coffeebean.tools": "0.5.0"
+  },
+  "testables": ["com.coffeebean.ui"],
+  "samples": [
+    {
+      "displayName": "UI Demo",
+      "description": "UI 模块示例：打开/关闭面板、层级、栈式导航、传参、代码生成用法。",
+      "path": "Samples~/UIDemo"
+    }
+  ]
+}
