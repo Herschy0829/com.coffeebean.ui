@@ -1,15 +1,16 @@
 {
   "name": "com.coffeebean.ui",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "displayName": "CoffeeBean UI",
-  "description": "UI module for the CoffeeBean framework: UGUI panel management (CUIManager/CUIPanel, 6 layers, panel stack, pluggable loader) + code generation (CBind marker, main/Designer two-file separation, auto-binding after compile). Depends on com.coffeebean.tools.",
+  "description": "UI module for the CoffeeBean framework: UGUI panel management (CUIManager/CUIPanel, 6 layers, panel stack, pluggable loader) + code generation (CBind marker, main/Designer two-file separation, auto-binding after compile). Loader pluggable: default Resources, CAssetPanelLoader for Addressables (via com.coffeebean.asset). Depends on com.coffeebean.tools + com.coffeebean.asset.",
   "unity": "6000.0",
   "author": {
     "name": "Herschy0829"
   },
   "keywords": ["coffeebean", "ui", "ugui", "panel", "codegen"],
   "dependencies": {
-    "com.coffeebean.tools": "0.5.0"
+    "com.coffeebean.tools": "0.5.0",
+    "com.coffeebean.asset": "0.1.0"
   },
   "testables": ["com.coffeebean.ui"],
   "samples": [

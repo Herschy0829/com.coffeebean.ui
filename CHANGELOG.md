@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.0] - 2026-08-28
+
+### Added
+- **`CAssetPanelLoader`（Addressables 面板加载）**：基于 asset 模块的 `CAssetSystem` 实现 `ICUIPanelLoader`，
+  面板预制体通过 Addressables 加载；配套 `CAssetPanelLoaderPool`。
+  用法：`CUIManager.Instance.PanelLoaderPool = new CAssetPanelLoaderPool();` 一行切换
+  （默认仍是 Resources 加载，二选一）
+- 依赖新增 `com.coffeebean.asset`（0.1.0）
+- 测试 4 个：同步加载 / 异步加载 / Unload 释放引用计数 / 池分配
+
 ## [0.1.1] - 2026-08-28
 
 ### Changed

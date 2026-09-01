@@ -2,7 +2,8 @@
   "name": "CoffeeBean.UI",
   "rootNamespace": "CoffeeBean",
   "references": [
-    "CoffeeBean.Tools"
+    "CoffeeBean.Tools",
+    "CoffeeBean.Asset"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],

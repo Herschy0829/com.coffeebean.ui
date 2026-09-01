@@ -3,7 +3,8 @@
   "rootNamespace": "CoffeeBean.UI.Tests",
   "references": [
     "CoffeeBean.Tools",
-    "CoffeeBean.UI"
+    "CoffeeBean.UI",
+    "CoffeeBean.Asset"
   ],
   "includePlatforms": [
     "Editor"
