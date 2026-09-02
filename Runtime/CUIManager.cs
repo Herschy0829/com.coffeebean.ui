@@ -109,6 +109,7 @@ namespace CoffeeBean
                     }
                     existed.Open(keys.UIData);
                     existed.Show();
+                    CUIMaskService.OnPanelOpened(existed);
                     return existed;
                 }
             }
@@ -117,6 +118,7 @@ namespace CoffeeBean
             if (panel == null) return null;
             panel.Open(keys.UIData);
             panel.Show();
+            CUIMaskService.OnPanelOpened(panel);
             return panel;
         }
 
@@ -143,6 +145,7 @@ namespace CoffeeBean
                     }
                     existed.Open(keys.UIData);
                     existed.Show();
+                    CUIMaskService.OnPanelOpened(existed);
                     onLoaded?.Invoke(existed);
                     return;
                 }
@@ -150,8 +153,14 @@ namespace CoffeeBean
 
             CreateUIAsync(keys, panel =>
             {
+                if (panel == null)
+                {
+                    onLoaded?.Invoke(null);
+                    return;
+                }
                 panel.Open(keys.UIData);
                 panel.Show();
+                CUIMaskService.OnPanelOpened(panel);
                 onLoaded?.Invoke(panel);
             });
         }
@@ -259,7 +268,8 @@ namespace CoffeeBean
             var panel = Table.GetPanels(keys).LastOrDefault();
             if (panel == null) return;
 
-            // 顺序关键：先移除（Remove 需要访问 Transform.name，对象必须仍存活）→ 清 Info → 再 Close（销毁）
+            // 顺序关键：先移除遮罩（需 Info.Level）→ 再移除（Remove 需要访问 Transform.name）→ 清 Info → Close（销毁）
+            CUIMaskService.OnPanelClosed(panel);
             Table.Remove(panel);
             panel.Info?.Reset();
             panel.Info = null;
@@ -273,12 +283,14 @@ namespace CoffeeBean
             var panels = Table.ToList();
             foreach (var panel in panels)
             {
+                CUIMaskService.OnPanelClosed(panel);
                 Table.Remove(panel);
                 panel.Info?.Reset();
                 panel.Info = null;
                 panel.Close();
             }
             Table.Clear();
+            CUIMaskService.ClearAll();
         }
 
         /// <summary>隐藏全部面板（保留实例）。</summary>
