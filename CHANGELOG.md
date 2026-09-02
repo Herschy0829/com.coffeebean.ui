@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1] - 2026-08-28
+
+
+### Added
+- **CUIPanelTransition 面板转场动画**：Fade / SlideLeft / SlideUp / Scale，Show/Hide 自动播放（纯协程，无外部依赖）
+
+# Changelog
+
 ## [0.2.0] - 2026-08-28
 
 ### Added

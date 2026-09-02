@@ -44,19 +44,33 @@ namespace CoffeeBean
             OnOpen(uiData);
         }
 
-        /// <summary>显示：SetActive(true) -> OnShow。业务不要直接调用。</summary>
+        /// <summary>显示：SetActive(true) -> 转场动画（如有）-> OnShow。业务不要直接调用。</summary>
         public void Show()
         {
             gameObject.SetActive(true);
             OnShow();
         }
 
-        /// <summary>隐藏：状态 Hide -> OnHide -> SetActive(false)。业务不要直接调用。</summary>
+        /// <summary>隐藏：转场动画（如有）-> 状态 Hide -> OnHide -> SetActive(false)。业务不要直接调用。</summary>
         public void Hide()
         {
-            State = CUIPanelState.Hide;
-            OnHide();
-            gameObject.SetActive(false);
+            var transition = GetComponent<CUIPanelTransition>();
+            if (transition != null && transition.HideAnim != CUIPanelAnimType.None && gameObject.activeInHierarchy)
+            {
+                // 播完隐藏动画再真正隐藏（协程；EditMode 下直接隐藏）
+                transition.PlayHide(() =>
+                {
+                    State = CUIPanelState.Hide;
+                    OnHide();
+                    gameObject.SetActive(false);
+                });
+            }
+            else
+            {
+                State = CUIPanelState.Hide;
+                OnHide();
+                gameObject.SetActive(false);
+            }
         }
 
         /// <summary>关闭卸载：OnClose -> Hide -> 卸载 loader -> 可选销毁。业务不要直接调用。</summary>
