@@ -48,6 +48,9 @@ namespace CoffeeBean
         /// <summary>加载器池（默认 Resources，可替换）。</summary>
         public ICUIPanelLoaderPool PanelLoaderPool { get; set; } = new CDefaultPanelLoaderPool();
 
+        /// <summary>面板统计（打开/关闭计数，供调试与统计面板）。</summary>
+        public CUIPanelStats Stats { get; } = new CUIPanelStats();
+
         /// <summary>测试用：重置单例（EditMode 测试 SetUp/TearDown 调用，释放旧实例）。</summary>
         public static void ResetInstanceForTest()
         {
@@ -110,6 +113,7 @@ namespace CoffeeBean
                     existed.Open(keys.UIData);
                     existed.Show();
                     CUIMaskService.OnPanelOpened(existed);
+                    Stats.RecordOpen(existed.GetType());
                     return existed;
                 }
             }
@@ -119,6 +123,7 @@ namespace CoffeeBean
             panel.Open(keys.UIData);
             panel.Show();
             CUIMaskService.OnPanelOpened(panel);
+            Stats.RecordOpen(panel.GetType());
             return panel;
         }
 
@@ -146,6 +151,7 @@ namespace CoffeeBean
                     existed.Open(keys.UIData);
                     existed.Show();
                     CUIMaskService.OnPanelOpened(existed);
+                    Stats.RecordOpen(existed.GetType());
                     onLoaded?.Invoke(existed);
                     return;
                 }
@@ -161,6 +167,7 @@ namespace CoffeeBean
                 panel.Open(keys.UIData);
                 panel.Show();
                 CUIMaskService.OnPanelOpened(panel);
+                Stats.RecordOpen(panel.GetType());
                 onLoaded?.Invoke(panel);
             });
         }
@@ -268,8 +275,9 @@ namespace CoffeeBean
             var panel = Table.GetPanels(keys).LastOrDefault();
             if (panel == null) return;
 
-            // 顺序关键：先移除遮罩（需 Info.Level）→ 再移除（Remove 需要访问 Transform.name）→ 清 Info → Close（销毁）
+            // 顺序关键：先移除遮罩（需 Info.Level）→ 记录统计 → 移除 → 清 Info → Close（销毁）
             CUIMaskService.OnPanelClosed(panel);
+            Stats.RecordClose(panel.GetType());
             Table.Remove(panel);
             panel.Info?.Reset();
             panel.Info = null;
@@ -284,6 +292,7 @@ namespace CoffeeBean
             foreach (var panel in panels)
             {
                 CUIMaskService.OnPanelClosed(panel);
+                Stats.RecordClose(panel.GetType());
                 Table.Remove(panel);
                 panel.Info?.Reset();
                 panel.Info = null;
@@ -291,6 +300,7 @@ namespace CoffeeBean
             }
             Table.Clear();
             CUIMaskService.ClearAll();
+            Stats.Reset();
         }
 
         /// <summary>隐藏全部面板（保留实例）。</summary>

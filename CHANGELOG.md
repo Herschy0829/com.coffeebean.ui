@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.3] - 2026-08-28
+
+
+### Added
+- **CUIPanelStats 面板统计**：累计打开/关闭次数、当前打开面板数、按类型分布；CUIManager.Stats 自动记录（打开/关闭/CloseAll 重置）
+
+# Changelog
+
 ## [0.2.2] - 2026-08-28
 
 
