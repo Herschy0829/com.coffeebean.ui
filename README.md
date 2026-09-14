@@ -5,7 +5,7 @@ CoffeeBean 框架的 UI 模块：**UGUI 面板管理 + 代码生成**。
 - **面板管理**：`CUIManager` / `CUIPanel`，6 层 UI（Bg/Common/PopUI/Guide/Toast/Top），Single/Multiple 打开类型，栈式导航（Push/Pop/Back），生命周期（Init/Open/Show/Hide/Close），面板传参（`ICUIData`）
 - **可插拔加载器**：`ICUIPanelLoader` 接口 + 池（默认 Resources 实现，将来可接 asset 模块 Addressables）
 - **代码生成**：`CBind` 标记组件 → Inspector/右键"生成面板代码" → **主脚本 + Designer partial 两文件分离**（用户代码不被覆盖）→ 编译后自动挂载字段引用
-- **零额外依赖**：仅依赖 `com.coffeebean.tools`（单例/日志）
+- **依赖**：`com.coffeebean.tools`（单例/日志）+ `com.coffeebean.asset`（`CAssetPanelLoader` 走 Addressables；默认 Resources 加载器不需要它，但包依赖关系上 asset 是必需的）
 
 > 设计文档：`docs/design-ui.md`
 
@@ -14,11 +14,15 @@ CoffeeBean 框架的 UI 模块：**UGUI 面板管理 + 代码生成**。
 ```json
 {
   "dependencies": {
-    "com.coffeebean.ui": "https://github.com/Herschy0829/com.coffeebean.ui.git#v0.1.0",
-    "com.coffeebean.tools": "https://github.com/Herschy0829/com.coffeebean.tools.git#v0.5.0"
+    "com.coffeebean.ui": "https://github.com/Herschy0829/com.coffeebean.ui.git#v0.2.4",
+    "com.coffeebean.tools": "https://github.com/Herschy0829/com.coffeebean.tools.git#v0.5.0",
+    "com.coffeebean.asset": "https://github.com/Herschy0829/com.coffeebean.asset.git#v0.2.3"
   }
 }
 ```
+
+> 面板转场动画：给面板预制体挂 `CUIPanelTransition` 并设置 `ShowAnim` / `HideAnim`，
+> `Show()` / `Hide()` 时自动播放（EditMode 下不跑协程，走同步路径）。
 
 ## 快速使用
 

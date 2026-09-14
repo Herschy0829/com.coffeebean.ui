@@ -48,16 +48,28 @@ namespace CoffeeBean
         public void Show()
         {
             gameObject.SetActive(true);
-            OnShow();
+
+            // 显示动画（与 Hide 对称）：配置了 ShowAnim 时播完再进入 OnShow。
+            // 必须限定 Application.isPlaying —— EditMode 下协程不推进，若在此启动协程
+            // 会导致 OnShow 永不触发（此前 Show 完全没有播放动画，所以该问题未暴露）。
+            var transition = GetComponent<CUIPanelTransition>();
+            if (Application.isPlaying && transition != null && transition.ShowAnim != CUIPanelAnimType.None)
+            {
+                transition.PlayShow(OnShow);
+            }
+            else
+            {
+                OnShow();
+            }
         }
 
         /// <summary>隐藏：转场动画（如有）-> 状态 Hide -> OnHide -> SetActive(false)。业务不要直接调用。</summary>
         public void Hide()
         {
             var transition = GetComponent<CUIPanelTransition>();
-            if (transition != null && transition.HideAnim != CUIPanelAnimType.None && gameObject.activeInHierarchy)
+            // Application.isPlaying：EditMode 下直接隐藏（协程不推进，否则面板会卡在未隐藏状态）
+            if (Application.isPlaying && transition != null && transition.HideAnim != CUIPanelAnimType.None)
             {
-                // 播完隐藏动画再真正隐藏（协程；EditMode 下直接隐藏）
                 transition.PlayHide(() =>
                 {
                     State = CUIPanelState.Hide;

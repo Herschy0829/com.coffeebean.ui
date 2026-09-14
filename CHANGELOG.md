@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.2.4] - 2026-09-14
+
+### Fixed
+- **显示动画（`ShowAnim`）从未生效**：`CUIPanel.Show()` 只做 `SetActive(true)` + `OnShow()`，
+  **从不调用 `CUIPanelTransition.PlayShow`**；而 `Hide()` 却会调用 `PlayHide` —— 两边不对称，
+  于是 `ShowAnim` 配置了也没用（CHANGELOG 0.1.x 曾声称"Show/Hide 时自动播放动画"）。
+  现在 `Show()` 在配置了 `ShowAnim` 时播放动画，播完再进入 `OnShow`（与 `Hide` 的语义对称）。
+- **`Hide()` 在 EditMode 下可能卡住**：原条件为 `transition != null && HideAnim != None && activeInHierarchy`，
+  注释却写"EditMode 下直接隐藏"。EditMode 下协程不推进，若面板确实配置了 `HideAnim`，
+  `PlayHide` 的回调永不执行 → 面板卡在"未隐藏"状态。`Show()`/`Hide()` 现统一加 `Application.isPlaying` 前置判断，
+  让注释描述的行为真正成立（EditMode 走同步路径）。
+
+### Fixed（契约）
+- **模块标记缺少 `com.coffeebean.asset` 依赖**：`Runtime/Bridge/Bridge.cs` 的 `Dependencies` 只有
+  `core` + `tools`，但 `package.json` 与 Runtime asmdef **实际依赖 `com.coffeebean.asset`**
+  （`CAssetPanelLoader` 直接使用 `CAssetSystem`）。Core 的拓扑排序依据正是这个数组，
+  因此 asset 不会被排在 ui 之前。当前 `UIModule.OnLoad` 只打日志、未触碰 `CAssetSystem`，
+  所以**尚无实际运行时影响**，但依赖图是失实的，一旦 OnLoad 里开始用 asset 就会踩到顺序问题。
+- README 安装示例的 tag 由严重过期的 `v0.1.0` 修正为 `v0.2.4`。
+
+### Tests
+- EditMode：**30/30 全绿**（`Application.isPlaying` 为 false，EditMode 走同步路径，生命周期顺序断言不受影响）。
+
 ## [0.2.3] - 2026-08-28
 
 

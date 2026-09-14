@@ -3,10 +3,10 @@ using CoffeeBean;
 
 [assembly: CoffeeBeanModule(
     "com.coffeebean.ui",
-    "0.2.3",
+    "0.2.4",
     DisplayName = "UI",
     Description = "UI module: UGUI panel management (CUIManager/CUIPanel, layers, stack, pluggable loader) + code generation (CBind, two-file separation).",
-    Dependencies = new[] { "com.coffeebean.core", "com.coffeebean.tools" }
+    Dependencies = new[] { "com.coffeebean.core", "com.coffeebean.tools", "com.coffeebean.asset" }
 )]
 
 namespace CoffeeBean
