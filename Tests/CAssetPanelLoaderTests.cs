@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using NUnit.Framework;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -15,18 +16,18 @@ namespace CoffeeBean.UI.Tests
 
         public bool HasAddress(string address) => _assets.ContainsKey(address);
 
-        public Task<bool> HasAddressAsync(string address)
+        public UniTask<bool> HasAddressAsync(string address)
         {
-            return Task.FromResult(_assets.ContainsKey(address));
+            return UniTask.FromResult(_assets.ContainsKey(address));
         }
 
         public T LoadAssetSync<T>(string address) where T : Object
             => _assets.TryGetValue(address, out var asset) && asset is T t ? t : null;
 
-        public Task<T> LoadAssetAsync<T>(string address) where T : Object
+        public UniTask<T> LoadAssetAsync<T>(string address) where T : Object
         {
             T result = _assets.TryGetValue(address, out var asset) && asset is T t ? t : null;
-            return Task.FromResult(result);
+            return UniTask.FromResult(result);
         }
 
         public void Release(string address, Object asset)

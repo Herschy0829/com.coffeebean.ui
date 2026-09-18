@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.2.5] - 2026-09-17
+
+### Fixed
+- **适配 asset v0.4.0 的异步面（Task → UniTask）**：`CAssetPanelLoader` 内部会
+  `await CAssetSystem.Instance.LoadAssetAsync<GameObject>(address)`，而 asset 的返回值从
+  `Task<T>` 变成了 `UniTask<T>` —— 不跟着改，装了 asset 0.4.0 的工程会直接
+  `CS0012: The type 'UniTask<>' is defined in an assembly that is not referenced`。
+
+  改动：Runtime/Tests asmdef 显式引用 `UniTask`；`package.json` 声明
+  `com.cysharp.unitask`（本模块代码确实用到它的类型）；测试里的 `TestAssetBackend`
+  按新契约返回 `UniTask`。
+
+### Notes
+- 调用方（`await`）写法不变。这是"被依赖模块换了异步类型"的连锁代价；
+  本次把**所有**调用 asset 异步 API 的地方都扫了一遍，只有 ui 这一处。
+
 ## [0.2.4] - 2026-09-14
 
 ### Fixed

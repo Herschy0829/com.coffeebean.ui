@@ -3,7 +3,8 @@
   "rootNamespace": "CoffeeBean",
   "references": [
     "CoffeeBean.Tools",
-    "CoffeeBean.Asset"
+    "CoffeeBean.Asset",
+    "UniTask"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
